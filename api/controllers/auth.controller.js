@@ -61,6 +61,8 @@ export const signup = async (req, res,next) => {
         .status(200)
         .cookie('access_token', token, {
           httpOnly: true,
+          secure: true, // Set to true if served over HTTPS
+          sameSite: 'None' // Set SameSite attribute to None
         })
         .json(rest);
     } catch (error) {
