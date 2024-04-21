@@ -1,11 +1,15 @@
 import {  Button, Navbar, TextInput } from 'flowbite-react';
 import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { FaMoon} from 'react-icons/fa';
+import { FaMoon, FaSun } from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme } from '../redux/theme/themeSlice';
 
 
 export default function Header() {
   const path = useLocation().pathname;
+  const { theme } = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
 
   return (
 
@@ -29,13 +33,14 @@ export default function Header() {
     <Button className='w-12 h-10 lg:hidden' color='gray' pill>
       <AiOutlineSearch />
     </Button>
-
     <Button
           className='w-12 h-10 hidden sm:inline'
           color='gray'
-          pill>
-    <FaMoon />
-    </Button>
+          pill
+          onClick={() => dispatch(toggleTheme())}
+        >
+          {theme === 'light' ? <FaSun /> : <FaMoon />}
+        </Button>
     <Link to='/sign-in'>
         <Button gradientDuoTone='purpleToBlue' outline>
         Sign In
