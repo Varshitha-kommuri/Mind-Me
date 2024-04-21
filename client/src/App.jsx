@@ -6,6 +6,7 @@ import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 import MindSpace from './pages/MindSpace'
 import Header from './components/header'
+import Footer from './components/Footer'
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
       <Route path="/dashboard" element={<Dashboard />}/>
       <Route path="/mindSpace" element={<MindSpace />}/>
     </Routes>
+    <Footer />
     </BrowserRouter>
   )
 }
