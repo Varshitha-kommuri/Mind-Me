@@ -1,7 +1,6 @@
 import User from '../models/user.model.js';
 import { errorHandler } from '../utils/error.js';
 import bcryptjs from 'bcryptjs';
-import dotenv  from 'dotenv';
 import jwt from 'jsonwebtoken';
 
 export const signup = async (req, res,next) => {
@@ -52,7 +51,7 @@ export const signup = async (req, res,next) => {
         return next(errorHandler(400, 'Invalid password'));
       }
       const token = jwt.sign(
-        { id: validUser._id, isAdmin: validUser.isAdmin },
+        { id: validUser._id },
         process.env.JWT_SECRET_KEY
       );
   
